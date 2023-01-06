@@ -1,0 +1,31 @@
+.input-back {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#input-form {
+  width: fit-content;
+  padding: 1rem;
+  box-shadow: 2px 2px 2px 1px gray , -2px -2px 2px 1px gray;  
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+ td > * {
+  font-size: calc(1rem + 1vw);
+  margin: 0.25rem auto;
+}
+td > input {
+  width: 100%;
+}
+td > button {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}

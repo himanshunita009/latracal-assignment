@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 import './App.css';
+import AttendenceInput from './Component/AttendenceInput';
+import AttendenceStatus from './Component/AttendenceStatus';
 
 function App() {
+  const [records,setRecords] = useState([]);
+  const handleSubmit = (data) => {
+    let res = records;
+    res.push(data);
+    setRecords(res);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className='App'>
+          <h2>
+            Student Attendence System
+          </h2>
+        <Routes >
+          <Route exact path='/' element={
+            <div className='home-page'> 
+              <Link to='/input'>Give your Attendence</Link>
+              <Link to='/status'>Check Attendence Record </Link>
+            </div>} 
+          />
+          <Route exact path='/input' element={<AttendenceInput handleSubmit={handleSubmit} records={records} />} />
+          <Route exact path='/status' element={<AttendenceStatus records={records} />} />
+        </Routes>
     </div>
+    </Router>     
   );
 }
 
